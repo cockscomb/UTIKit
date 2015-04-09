@@ -32,18 +32,18 @@ import UTIKit
 class UTITests: XCTestCase {
 
     func testInitialize() {
-        let jpeg = UTI(kUTTypeJPEG)
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG)
+        let jpeg = UTI(kUTTypeJPEG as String)
+        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
     }
 
     func testInitialize_filenameExtension() {
         let jpeg = UTI(filenameExtension: "jpg")
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG)
+        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
     }
 
     func testInitialize_MIMEType() {
         let jpeg = UTI(MIMEType: "image/jpg")
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG)
+        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
     }
 
     func testUTIsFromFilenameExtension() {
@@ -57,12 +57,12 @@ class UTITests: XCTestCase {
     }
 
     func testFilenameExtension() {
-        let html = UTI(kUTTypeHTML)
+        let html = UTI(kUTTypeHTML as String)
         XCTAssertEqual(html.filenameExtension!, "html")
     }
 
     func testFilenameExtensions() {
-        let html = UTI(kUTTypeHTML)
+        let html = UTI(kUTTypeHTML as String)
         XCTAssertEqual(html.filenameExtensions, [ "html" , "htm", "shtml", "shtm" ])
     }
 
@@ -92,14 +92,14 @@ class UTITests: XCTestCase {
         XCTAssertTrue(pages.declaration.importedTypeDeclarations.isEmpty)
         XCTAssertEqual(pages.declaration.identifier!, "com.apple.iWork.Pages.pages")
         XCTAssertNotNil(pages.declaration.tagSpecification)
-        XCTAssertEqual(pages.declaration.conformsTo, [ UTI(kUTTypePackage), UTI(kUTTypeCompositeContent) ])
+        XCTAssertEqual(pages.declaration.conformsTo, [ UTI(kUTTypePackage as String), UTI(kUTTypeCompositeContent as String) ])
         XCTAssertNil(pages.declaration.iconFile)
         XCTAssertEqual(pages.declaration.referenceURL!, NSURL(string: "http://www.apple.com/iwork/pages/")!)
         XCTAssertNil(pages.declaration.version)
     }
 
     func testDeclaringBundle() {
-        let pdf = UTI(kUTTypePDF)
+        let pdf = UTI(kUTTypePDF as String)
         XCTAssertNotNil(pdf.declaringBundle)
     }
 
@@ -108,10 +108,10 @@ class UTITests: XCTestCase {
     }
 
     func testMatch() {
-        XCTAssertTrue(UTI(kUTTypeImage) ~= UTI(MIMEType: "image/jpeg"))
+        XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(MIMEType: "image/jpeg"))
 
-        switch UTI(kUTTypeJPEG) {
-        case UTI(kUTTypeImage):
+        switch UTI(kUTTypeJPEG as String) {
+        case UTI(kUTTypeImage as String):
             XCTAssert(true)
         default:
             XCTFail("kUTTypeJPEG must be comforms to kUTTypeImage")
