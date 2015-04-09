@@ -38,23 +38,23 @@ public struct UTI: Printable, DebugPrintable, Equatable {
 
     public init(filenameExtension: String, conformingToUTI: UTI? = nil) {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
-        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, filenameExtension, conformingToUTIString).takeRetainedValue()
+        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, filenameExtension, conformingToUTIString).takeRetainedValue() as String
     }
 
     public init(MIMEType: String, conformingToUTI: UTI? = nil) {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
-        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, MIMEType, conformingToUTIString).takeRetainedValue()
+        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, MIMEType, conformingToUTIString).takeRetainedValue() as String
     }
 
     #if os(OSX)
     public init(pasteBoardType: String, conformingToUTI: UTI? = nil) {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
-        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassNSPboardType, pasteBoardType, conformingToUTIString).takeRetainedValue()
+        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassNSPboardType, pasteBoardType, conformingToUTIString).takeRetainedValue() as String
     }
 
     public init(OSType: String, conformingToUTI: UTI? = nil) {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
-        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassOSType, OSType, conformingToUTIString).takeRetainedValue()
+        self.UTIString = UTTypeCreatePreferredIdentifierForTag(kUTTagClassOSType, OSType, conformingToUTIString).takeRetainedValue() as String
     }
     #endif
 
@@ -62,31 +62,31 @@ public struct UTI: Printable, DebugPrintable, Equatable {
 
     private static func UTIsForTagClass(tagClass: String, tag: String, conformingToUTI: UTI?) -> [UTI] {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
-        return (UTTypeCreateAllIdentifiersForTag(tagClass, tag, conformingToUTIString).takeRetainedValue() as [String]).map { UTI($0) }
+        return (UTTypeCreateAllIdentifiersForTag(tagClass, tag, conformingToUTIString).takeRetainedValue() as! [String]).map { UTI($0) }
     }
 
     public static func UTIsFromFilenameExtension(filenameExtension: String, conformingToUTI: UTI? = nil) -> [UTI] {
-        return UTIsForTagClass(kUTTagClassFilenameExtension, tag: filenameExtension, conformingToUTI: conformingToUTI)
+        return UTIsForTagClass(kUTTagClassFilenameExtension as String, tag: filenameExtension, conformingToUTI: conformingToUTI)
     }
 
     public static func UTIsFromMIMEType(MIMEType: String, conformingToUTI: UTI? = nil) -> [UTI] {
-        return UTIsForTagClass(kUTTagClassMIMEType, tag: MIMEType, conformingToUTI: conformingToUTI)
+        return UTIsForTagClass(kUTTagClassMIMEType as String, tag: MIMEType, conformingToUTI: conformingToUTI)
     }
 
     #if os(OSX)
     public static func UTIsFromPasteBoardType(pasteBoardType: String, conformingToUTI: UTI? = nil) -> [UTI] {
-        return UTIsForTagClass(kUTTagClassNSPboardType, tag: pasteBoardType, conformingToUTI: conformingToUTI)
+        return UTIsForTagClass(kUTTagClassNSPboardType as String, tag: pasteBoardType, conformingToUTI: conformingToUTI)
     }
 
     public static func UTIsFromOSType(OSType: String, conformingToUTI: UTI? = nil) -> [UTI] {
-        return UTIsForTagClass(kUTTagClassOSType, tag: OSType, conformingToUTI: conformingToUTI)
+        return UTIsForTagClass(kUTTagClassOSType as String, tag: OSType, conformingToUTI: conformingToUTI)
     }
     #endif
 
     // MARK: - Tags
 
     private func tagWithClass(tagClass: String) -> String? {
-        return UTTypeCopyPreferredTagWithClass(UTIString, tagClass)?.takeRetainedValue()
+        return UTTypeCopyPreferredTagWithClass(UTIString, tagClass)?.takeRetainedValue() as String?
     }
 
     @availability(OSX, introduced=10.10)
@@ -96,42 +96,42 @@ public struct UTI: Printable, DebugPrintable, Equatable {
     }
 
     public var filenameExtension: String? {
-        return tagWithClass(kUTTagClassFilenameExtension)
+        return tagWithClass(kUTTagClassFilenameExtension as String)
     }
 
     @availability(OSX, introduced=10.10)
     @availability(iOS, introduced=8.0)
     public var filenameExtensions: [String] {
-        return tagsWithClass(kUTTagClassFilenameExtension)
+        return tagsWithClass(kUTTagClassFilenameExtension as String)
     }
 
     public var MIMEType: String? {
-        return tagWithClass(kUTTagClassMIMEType)
+        return tagWithClass(kUTTagClassMIMEType as String)
     }
 
     @availability(OSX, introduced=10.10)
     @availability(iOS, introduced=8.0)
     public var MIMETypes: [String] {
-        return tagsWithClass(kUTTagClassMIMEType)
+        return tagsWithClass(kUTTagClassMIMEType as String)
     }
 
     #if os(OSX)
     public var pasteBoardType: String? {
-        return tagWithClass(kUTTagClassNSPboardType)
+        return tagWithClass(kUTTagClassNSPboardType as String)
     }
 
     @availability(OSX, introduced=10.10)
     public var pasteBoardTypes: [String] {
-        return tagsWithClass(kUTTagClassNSPboardType)
+        return tagsWithClass(kUTTagClassNSPboardType as String)
     }
 
     public var OSType: String? {
-        return tagWithClass(kUTTagClassOSType)
+        return tagWithClass(kUTTagClassOSType as String)
     }
 
     @availability(OSX, introduced=10.10)
     public var OSTypes: [String] {
-        return tagsWithClass(kUTTagClassOSType)
+        return tagsWithClass(kUTTagClassOSType as String)
     }
     #endif
 
@@ -211,7 +211,7 @@ public struct UTI: Printable, DebugPrintable, Equatable {
     }
 
     public var declaration: Declaration {
-        return Declaration(declaration: UTTypeCopyDeclaration(self.UTIString)?.takeRetainedValue() ?? [:])
+        return Declaration(declaration: UTTypeCopyDeclaration(self.UTIString)?.takeRetainedValue() as? [NSObject: AnyObject] ?? [:])
     }
 
     public var declaringBundle: NSBundle? {
@@ -232,7 +232,7 @@ public struct UTI: Printable, DebugPrintable, Equatable {
     // MARK: - Printable, DebugPrintable
 
     public var description: String {
-        return UTTypeCopyDescription(UTIString)?.takeRetainedValue() ?? UTIString
+        return UTTypeCopyDescription(UTIString)?.takeRetainedValue() as? String ?? UTIString
     }
 
     public var debugDescription: String {
