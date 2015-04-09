@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "UTIKit"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "UTIKit is an UTI (Uniform Type Identifier) wrapper for Swift."
 
   s.description  = <<-DESC
