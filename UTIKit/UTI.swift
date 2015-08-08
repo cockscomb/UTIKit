@@ -140,13 +140,13 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
     @available(OSX, introduced=10.10)
     @available(iOS, introduced=8.0)
     public var isDeclared: Bool {
-        return UTTypeIsDeclared(UTIString) == 1
+        return UTTypeIsDeclared(UTIString)
     }
 
     @available(OSX, introduced=10.10)
     @available(iOS, introduced=8.0)
     public var isDynamic: Bool {
-        return UTTypeIsDynamic(UTIString) == 1
+        return UTTypeIsDynamic(UTIString)
     }
 
     // MARK: - Declaration
@@ -242,9 +242,9 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
 }
 
 public func ==(lhs: UTI, rhs: UTI) -> Bool {
-    return UTTypeEqual(lhs.UTIString, rhs.UTIString) == 1
+    return UTTypeEqual(lhs.UTIString, rhs.UTIString)
 }
 
 public func ~=(pattern: UTI, value: UTI) -> Bool {
-    return UTTypeConformsTo(value.UTIString, pattern.UTIString) == 1
+    return UTTypeConformsTo(value.UTIString, pattern.UTIString)
 }
