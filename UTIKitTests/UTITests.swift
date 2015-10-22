@@ -37,12 +37,12 @@ class UTITests: XCTestCase {
     }
 
     func testInitialize_filenameExtension() {
-        let jpeg = UTI(filenameExtension: "jpg")
+        let jpeg = UTI(filenameExtension: "jpg")!
         XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
     }
 
     func testInitialize_MIMEType() {
-        let jpeg = UTI(MIMEType: "image/jpg")
+        let jpeg = UTI(MIMEType: "image/jpg")!
         XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
     }
 
@@ -67,27 +67,27 @@ class UTITests: XCTestCase {
     }
 
     func testMIMEType() {
-        let xls = UTI(filenameExtension: "xls")
+        let xls = UTI(filenameExtension: "xls")!
         XCTAssertEqual(xls.MIMEType!, "application/vnd.ms-excel")
     }
 
     func testMIMETypes() {
-        let xls = UTI(filenameExtension: "xls")
+        let xls = UTI(filenameExtension: "xls")!
         XCTAssertEqual(xls.MIMETypes, [ "application/vnd.ms-excel", "application/msexcel" ])
     }
 
     func testIsDeclared() {
-        XCTAssertTrue(UTI(filenameExtension: "numbers").isDeclared)
-        XCTAssertFalse(UTI(filenameExtension: "meaningless-characters").isDeclared)
+        XCTAssertTrue(UTI(filenameExtension: "numbers")!.isDeclared)
+        XCTAssertFalse(UTI(filenameExtension: "meaningless-characters")!.isDeclared)
     }
 
     func testIsDynamic() {
-        XCTAssertFalse(UTI(filenameExtension: "key").isDynamic)
-        XCTAssertTrue(UTI(filenameExtension: "all-new-filetype").isDynamic)
+        XCTAssertFalse(UTI(filenameExtension: "key")!.isDynamic)
+        XCTAssertTrue(UTI(filenameExtension: "all-new-filetype")!.isDynamic)
     }
 
     func testDeclaration() {
-        let pages = UTI(filenameExtension: "pages")
+        let pages = UTI(filenameExtension: "pages")!
         XCTAssertTrue(pages.declaration.exportedTypeDeclarations.isEmpty)
         XCTAssertTrue(pages.declaration.importedTypeDeclarations.isEmpty)
         XCTAssertEqual(pages.declaration.identifier!, "com.apple.iWork.Pages.pages")
@@ -108,7 +108,7 @@ class UTITests: XCTestCase {
     }
 
     func testMatch() {
-        XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(MIMEType: "image/jpeg"))
+        XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(MIMEType: "image/jpeg")!)
 
         switch UTI(kUTTypeJPEG as String) {
         case UTI(kUTTypeImage as String):
