@@ -54,7 +54,7 @@ UTI(MIMEType: "image/jpeg") == UTI(filenameExtension: "jpeg") // => true
 ```swift
 switch UTI(kUTTypeJPEG) {
 case UTI(kUTTypeImage):
-    println("JPEG is a kind of images")
+    print("JPEG is a kind of images")
 default:
     fatalError("JPEG must be a image")
 }
