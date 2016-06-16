@@ -90,11 +90,11 @@ class UTITests: XCTestCase {
         let pages = UTI(filenameExtension: "pages")!
         XCTAssertTrue(pages.declaration.exportedTypeDeclarations.isEmpty)
         XCTAssertTrue(pages.declaration.importedTypeDeclarations.isEmpty)
-        XCTAssertEqual(pages.declaration.identifier!, "com.apple.iWork.Pages.pages")
+        XCTAssertEqual(pages.declaration.identifier?.lowercased(), "com.apple.iwork.pages.pages")
         XCTAssertNotNil(pages.declaration.tagSpecification)
         XCTAssertEqual(pages.declaration.conformsTo, [ UTI(kUTTypePackage as String), UTI(kUTTypeCompositeContent as String) ])
         XCTAssertNil(pages.declaration.iconFile)
-        XCTAssertEqual(pages.declaration.referenceURL!, NSURL(string: "http://www.apple.com/iwork/pages/")!)
+        XCTAssertEqual(pages.declaration.referenceURL!, URL(string: "http://www.apple.com/iwork/pages/")!)
         XCTAssertNil(pages.declaration.version)
     }
 
