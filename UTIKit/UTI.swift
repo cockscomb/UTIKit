@@ -48,7 +48,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         self.UTIString = rawUTI as String
     }
 
-    #if os(OSX)
+    #if os(macOS)
     public init?(pasteBoardType: String, conformingToUTI: UTI? = nil) {
         let conformingToUTIString: CFString? = conformingToUTI?.UTIString
         guard let rawUTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassNSPboardType, pasteBoardType, conformingToUTIString)?.takeRetainedValue() else { return nil }
@@ -78,7 +78,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         return UTIsForTagClass(kUTTagClassMIMEType as String, tag: MIMEType, conformingToUTI: conformingToUTI)
     }
 
-    #if os(OSX)
+    #if os(macOS)
     public static func UTIsFromPasteBoardType(pasteBoardType: String, conformingToUTI: UTI? = nil) -> [UTI] {
         return UTIsForTagClass(kUTTagClassNSPboardType as String, tag: pasteBoardType, conformingToUTI: conformingToUTI)
     }
@@ -94,7 +94,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         return UTTypeCopyPreferredTagWithClass(UTIString as CFString, tagClass as CFString)?.takeRetainedValue() as String?
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     @available(iOS, introduced:8.0)
     private func tagsWithClass(_ tagClass: String) -> [String] {
         guard let tags = UTTypeCopyAllTagsWithClass(UTIString as CFString, tagClass as CFString)?.takeRetainedValue() else { return [] }
@@ -105,7 +105,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         return tagWithClass(kUTTagClassFilenameExtension as String)
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     @available(iOS, introduced:8.0)
     public var filenameExtensions: [String] {
         return tagsWithClass(kUTTagClassFilenameExtension as String)
@@ -115,18 +115,18 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         return tagWithClass(kUTTagClassMIMEType as String)
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     @available(iOS, introduced:8.0)
     public var MIMETypes: [String] {
         return tagsWithClass(kUTTagClassMIMEType as String)
     }
 
-    #if os(OSX)
+    #if os(macOS)
     public var pasteBoardType: String? {
         return tagWithClass(kUTTagClassNSPboardType as String)
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     public var pasteBoardTypes: [String] {
         return tagsWithClass(kUTTagClassNSPboardType as String)
     }
@@ -135,7 +135,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         return tagWithClass(kUTTagClassOSType as String)
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     public var OSTypes: [String] {
         return tagsWithClass(kUTTagClassOSType as String)
     }
@@ -143,13 +143,13 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
 
     // MARK: - Status
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     @available(iOS, introduced:8.0)
     public var isDeclared: Bool {
         return UTTypeIsDeclared(UTIString as CFString)
     }
 
-    @available(OSX, introduced:10.10)
+    @available(macOS, introduced:10.10)
     @available(iOS, introduced:8.0)
     public var isDynamic: Bool {
         return UTTypeIsDynamic(UTIString as CFString)
