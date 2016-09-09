@@ -32,21 +32,21 @@ let jpeg = UTI(filenameExtension: "jpeg")
 ### Making from a MIME type
 
 ```swift
-let jpeg = UTI(MIMEType: "image/jpeg")
+let jpeg = UTI(mimeType: "image/jpeg")
 ```
 
 ### Getting filename extensions or MIME types
 
 ```swift
-UTI(MIMEType: "image/jpeg").filenameExtensions // => ["jpeg", "jpg", "jpe"]
+UTI(mimeType: "image/jpeg").filenameExtensions // => ["jpeg", "jpg", "jpe"]
 
-UTI(filenameExtension: "jpeg").MIMETypes // => ["image/jpeg"]
+UTI(filenameExtension: "jpeg").mimeTypes // => ["image/jpeg"]
 ```
 
 ### Equality
 
 ```swift
-UTI(MIMEType: "image/jpeg") == UTI(filenameExtension: "jpeg") // => true
+UTI(mimeType: "image/jpeg") == UTI(filenameExtension: "jpeg") // => true
 ```
 
 ### Conformance
@@ -62,6 +62,7 @@ default:
 
 ## Requirements
 
+- Swift 3.0 or later
 - iOS 8 or later
 - OS X 10.10 or later
 

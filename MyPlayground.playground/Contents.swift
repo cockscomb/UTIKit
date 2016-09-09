@@ -5,9 +5,9 @@ import MobileCoreServices
 
 import UTIKit
 
-UTI(MIMEType: "image/jpeg")?.filenameExtensions
+UTI(mimeType: "image/jpeg")?.filenameExtensions
 
-UTI(filenameExtension: "jpeg") == UTI(MIMEType: "image/jpeg")
+UTI(filenameExtension: "jpeg") == UTI(mimeType: "image/jpeg")
 
 switch UTI(kUTTypeJPEG as String) {
 case UTI(kUTTypeImage as String):
