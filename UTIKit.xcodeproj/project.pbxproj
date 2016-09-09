@@ -207,6 +207,7 @@
 				TargetAttributes = {
 					09F886601A98D47E00ADF55F = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0800;
 					};
 					09FD213A1A962FC00071BF6B = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -319,6 +320,7 @@
 				PRODUCT_NAME = UTIKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -342,6 +344,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
