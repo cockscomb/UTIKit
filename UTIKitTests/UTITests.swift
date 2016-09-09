@@ -33,26 +33,26 @@ class UTITests: XCTestCase {
 
     func testInitialize() {
         let jpeg = UTI(kUTTypeJPEG as String)
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
+        XCTAssertEqual(jpeg.utiString, kUTTypeJPEG as String)
     }
 
     func testInitialize_filenameExtension() {
         let jpeg = UTI(filenameExtension: "jpg")!
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
+        XCTAssertEqual(jpeg.utiString, kUTTypeJPEG as String)
     }
 
     func testInitialize_MIMEType() {
-        let jpeg = UTI(MIMEType: "image/jpg")!
-        XCTAssertEqual(jpeg.UTIString, kUTTypeJPEG as String)
+        let jpeg = UTI(mimeType: "image/jpg")!
+        XCTAssertEqual(jpeg.utiString, kUTTypeJPEG as String)
     }
 
     func testUTIsFromFilenameExtension() {
-        let UTIs = UTI.UTIsFromFilenameExtension("key")
+        let UTIs = UTI.UTIs(fromFilenameExtension: "key")
         XCTAssertEqual(UTIs, [ UTI("com.apple.iwork.keynote.key"), UTI("com.apple.iwork.keynote.sffkey") ])
     }
 
     func testUTIsFromMIMEType() {
-        let UTIs = UTI.UTIsFromMIMEType("text/plain")
+        let UTIs = UTI.UTIs(fromMimeType: "text/plain")
         XCTAssertEqual(UTIs, [ UTI("public.plain-text") ])
     }
 
@@ -68,12 +68,12 @@ class UTITests: XCTestCase {
 
     func testMIMEType() {
         let xls = UTI(filenameExtension: "xls")!
-        XCTAssertEqual(xls.MIMEType!, "application/vnd.ms-excel")
+        XCTAssertEqual(xls.mimeType!, "application/vnd.ms-excel")
     }
 
     func testMIMETypes() {
         let xls = UTI(filenameExtension: "xls")!
-        XCTAssertEqual(xls.MIMETypes, [ "application/vnd.ms-excel", "application/msexcel" ])
+        XCTAssertEqual(xls.mimeTypes, [ "application/vnd.ms-excel", "application/msexcel" ])
     }
 
     func testIsDeclared() {
@@ -90,11 +90,11 @@ class UTITests: XCTestCase {
         let pages = UTI(filenameExtension: "pages")!
         XCTAssertTrue(pages.declaration.exportedTypeDeclarations.isEmpty)
         XCTAssertTrue(pages.declaration.importedTypeDeclarations.isEmpty)
-        XCTAssertEqual(pages.declaration.identifier!, "com.apple.iWork.Pages.pages")
+        XCTAssertEqual(pages.declaration.identifier?.lowercased(), "com.apple.iwork.pages.pages")
         XCTAssertNotNil(pages.declaration.tagSpecification)
         XCTAssertEqual(pages.declaration.conformsTo, [ UTI(kUTTypePackage as String), UTI(kUTTypeCompositeContent as String) ])
         XCTAssertNil(pages.declaration.iconFile)
-        XCTAssertEqual(pages.declaration.referenceURL!, NSURL(string: "http://www.apple.com/iwork/pages/")!)
+        XCTAssertEqual(pages.declaration.referenceUrl!, URL(string: "http://www.apple.com/iwork/pages/")!)
         XCTAssertNil(pages.declaration.version)
     }
 
@@ -104,11 +104,11 @@ class UTITests: XCTestCase {
     }
 
     func testEquatable() {
-        XCTAssertEqual(UTI(filenameExtension: "gif"), UTI(MIMEType: "image/gif"))
+        XCTAssertEqual(UTI(filenameExtension: "gif"), UTI(mimeType: "image/gif"))
     }
 
     func testMatch() {
-        XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(MIMEType: "image/jpeg")!)
+        XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(mimeType: "image/jpeg")!)
 
         switch UTI(kUTTypeJPEG as String) {
         case UTI(kUTTypeImage as String):
