@@ -238,7 +238,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
     // MARK: - Printable, DebugPrintable
 
     public var description: String {
-        return UTTypeCopyDescription(utiString as CFString)?.takeRetainedValue() as? String ?? utiString
+        return UTTypeCopyDescription(utiString as CFString)?.takeRetainedValue() as String? ?? utiString
     }
 
     public var debugDescription: String {
