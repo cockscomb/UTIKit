@@ -260,27 +260,27 @@ public func ~=(pattern: UTI, value: UTI) -> Bool {
 public extension UTI {
 
     @available(*, unavailable, renamed: "utiString")
-    public var UTIString: String {
+    var UTIString: String {
         return utiString
     }
 
     @available(*, unavailable, renamed: "init(filenameExtension:conformingTo:)")
-    public init?(filenameExtension: String, conformingToUTI: UTI? = nil) {
+    init?(filenameExtension: String, conformingToUTI: UTI? = nil) {
         self.init(filenameExtension: filenameExtension, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "init(mimeType:conformingTo:)")
-    public init?(MIMEType: String, conformingToUTI: UTI? = nil) {
+    init?(MIMEType: String, conformingToUTI: UTI? = nil) {
         self.init(mimeType: MIMEType, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "UTIs(fromFilenameExtension:conformingTo:)")
-    public static func UTIsFromFilenameExtension(_ filenameExtension: String, conformingToUTI: UTI? = nil) -> [UTI] {
+    static func UTIsFromFilenameExtension(_ filenameExtension: String, conformingToUTI: UTI? = nil) -> [UTI] {
         return UTIs(fromFilenameExtension: filenameExtension, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "UTIs(fromMimeType:conformingTo:)")
-    public static func UTIsFromMIMEType(_ MIMEType: String, conformingToUTI: UTI? = nil) -> [UTI] {
+    static func UTIsFromMIMEType(_ MIMEType: String, conformingToUTI: UTI? = nil) -> [UTI] {
         return UTIs(fromMimeType: MIMEType, conformingTo: conformingToUTI)
     }
 
@@ -307,17 +307,17 @@ public extension UTI {
     #endif
 
     @available(*, unavailable, renamed: "mimeType")
-    public var MIMEType: String? {
+    var MIMEType: String? {
         return mimeType
     }
 
     @available(*, unavailable, renamed: "mimeTypes")
-    public var MIMETypes: [String] {
+    var MIMETypes: [String] {
         return mimeTypes
     }
 
     @available(*, unavailable, renamed: "iconFileUrl")
-    public var iconFileURL: URL? {
+    var iconFileURL: URL? {
         return iconFileUrl
     }
 
@@ -326,7 +326,7 @@ public extension UTI {
 public extension UTI.Declaration {
 
     @available(*, unavailable, renamed: "referenceUrl")
-    public var referenceURL: URL? {
+    var referenceURL: URL? {
         return referenceUrl
     }
 
