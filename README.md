@@ -1,5 +1,7 @@
 # UTIKit
 
+![CI status](https://github.com/cockscomb/UTIKit/workflows/CI/badge.svg)
+
 UTIKit is an UTI (Uniform Type Identifier) wrapper for Swift.
 
 ## Features
