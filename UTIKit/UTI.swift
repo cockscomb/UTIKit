@@ -286,22 +286,22 @@ public extension UTI {
 
     #if os(macOS)
     @available(*, unavailable, renamed: "init(pasteBoardType:conformingTo:)")
-    public init?(pasteBoardType: String, conformingToUTI: UTI? = nil) {
+    init?(pasteBoardType: String, conformingToUTI: UTI? = nil) {
         self.init(pasteBoardType: pasteBoardType, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "init(OSType:conformingTo:)")
-    public init?(OSType: String, conformingToUTI: UTI? = nil) {
+    init?(OSType: String, conformingToUTI: UTI? = nil) {
         self.init(OSType: OSType, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "UTIs(fromPasteBoardType:conformingTo:)")
-    public static func UTIsFromPasteBoardType(pasteBoardType: String, conformingToUTI: UTI? = nil) -> [UTI] {
+    static func UTIsFromPasteBoardType(pasteBoardType: String, conformingToUTI: UTI? = nil) -> [UTI] {
         return UTIs(fromPasteBoardType: pasteBoardType, conformingTo: conformingToUTI)
     }
 
     @available(*, unavailable, renamed: "UTIs(fromOSType:conformingTo:)")
-    public static func UTIsFromOSType(OSType: String, conformingToUTI: UTI? = nil) -> [UTI] {
+    static func UTIsFromOSType(OSType: String, conformingToUTI: UTI? = nil) -> [UTI] {
         return UTIs(fromOTType: OSType, conformingTo: conformingToUTI)
     }
     #endif
