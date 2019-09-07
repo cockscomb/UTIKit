@@ -24,6 +24,8 @@ Pod::Spec.new do |s|
   s.author             = { "Hiroki Kato" => "mail@cockscomb.info" }
   s.social_media_url   = "http://twitter.com/cockscomb"
 
+  s.swift_version = '4.0'
+
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
 
