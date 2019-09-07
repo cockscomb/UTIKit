@@ -16,8 +16,13 @@ jobs:
     runs-on: macOS-latest
     needs: [test]
     steps:
-      - name: Push
-        env:
-          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        run: pod trunk push
-        if: contains(github.ref, 'tags/')
+    - uses: actions/checkout@v1
+      if: contains(github.ref, 'tags/')
+    - name: xcode-select
+      run: sudo xcode-select --switch '/Applications/Xcode_10.3.app'
+      if: contains(github.ref, 'tags/')
+    - name: Push
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+      run: pod trunk push UTIKit.podspec
+      if: contains(github.ref, 'tags/')
