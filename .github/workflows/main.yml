@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: xcode-select
+      run: sudo xcode-select --switch '/Applications/Xcode_10.3.app'
+    - name: Test
+      run: set -o pipefail && xcodebuild -project UTIKit.xcodeproj -scheme 'UTIKit iOS' -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=12.4,name=iPhone Xs' test | xcpretty
