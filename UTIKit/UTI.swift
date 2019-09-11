@@ -26,7 +26,7 @@ import Foundation
 import MobileCoreServices
 #endif
 
-public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equatable {
+public struct UTI: CustomStringConvertible, CustomDebugStringConvertible {
 
     public let utiString: String
 
@@ -247,8 +247,10 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
 
 }
 
-public func ==(lhs: UTI, rhs: UTI) -> Bool {
-    return UTTypeEqual(lhs.utiString as CFString, rhs.utiString as CFString)
+extension UTI: Equatable {
+	static public func ==(lhs: UTI, rhs: UTI) -> Bool {
+		return UTTypeEqual(lhs.utiString as CFString, rhs.utiString as CFString)
+	}
 }
 
 public func ~=(pattern: UTI, value: UTI) -> Bool {
