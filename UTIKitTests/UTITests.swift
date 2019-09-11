@@ -76,14 +76,18 @@ class UTITests: XCTestCase {
         XCTAssertEqual(xls.mimeTypes, [ "application/vnd.ms-excel", "application/msexcel" ])
     }
 
+	
+	let declaredUTI = UTI(filenameExtension: "numbers")!
+	let dynamicUTI = UTI(filenameExtension: "some-all-new-filetype")!
+	
     func testIsDeclared() {
-        XCTAssertTrue(UTI(filenameExtension: "numbers")!.isDeclared)
-        XCTAssertFalse(UTI(filenameExtension: "meaningless-characters")!.isDeclared)
+        XCTAssertTrue(declaredUTI.isDeclared)
+        XCTAssertFalse(dynamicUTI.isDeclared)
     }
 
     func testIsDynamic() {
-        XCTAssertFalse(UTI(filenameExtension: "key")!.isDynamic)
-        XCTAssertTrue(UTI(filenameExtension: "all-new-filetype")!.isDynamic)
+        XCTAssertFalse(declaredUTI.isDynamic)
+        XCTAssertTrue(dynamicUTI.isDynamic)
     }
 
     func testDeclaration() {
