@@ -211,21 +211,21 @@
 					};
 					09FD213A1A962FC00071BF6B = {
 						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1100;
 					};
 					09FD21451A962FC00071BF6B = {
 						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
 			buildConfigurationList = 09FD21351A962FC00071BF6B /* Build configuration list for PBXProject "UTIKit" */;
 			compatibilityVersion = "Xcode 10.0";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 09FD21311A962FC00071BF6B;
 			productRefGroup = 09FD213C1A962FC00071BF6B /* Products */;
@@ -486,9 +486,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = UTIKit;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -510,9 +512,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = UTIKit;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -535,6 +539,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -553,6 +558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
