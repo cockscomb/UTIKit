@@ -107,62 +107,7 @@ class UTITests: XCTestCase {
         XCTAssertNotNil(pdf.declaringBundle)
     }
 
-    func testEquatable() {
-		/// Test that every UTI is equal to itself.
-		func testReflexivity(_ uti: UTI) {
-			XCTAssertEqual(uti, uti)
-		}
-		
-		/// Test the equality is symmetric, i.e. that a == b equivalent to b == a
-		func testSymmetry(_ a: UTI, _ b: UTI) {
-			if a == b {
-				XCTAssertEqual(b, a)
-			} else {
-				XCTAssertNotEqual(b, a)
-			}
-		}
-		
-		
-		/// Test that 2/3 pairs being equal implies the 3rd pair must be equal.
-		func testReflexivity(_ a: UTI, _ b: UTI, _ c: UTI) {
-			let pairs = [
-				(a, b),
-				(b, c),
-				(c, a),
-			]
-			
-			let pairEquality = pairs.map(==)
-			
-			if pairEquality[0] && pairEquality[1] { XCTAssertEqual(pairs[2].0, pairs[2].1) }
-			if pairEquality[1] && pairEquality[2] { XCTAssertEqual(pairs[0].0, pairs[0].1) }
-			if pairEquality[2] && pairEquality[0] { XCTAssertEqual(pairs[1].0, pairs[1].1) }
-		}
-	
-
-		let gif = UTI("com.compuserve.gif")
-		let png = UTI("public.png")
-		
-		XCTAssertNotEqual(gif, png)
-		
-		testReflexivity(gif)
-		testReflexivity(png)
-		
-		testSymmetry(gif, gif)
-		testSymmetry(gif, png)
-		testSymmetry(png, gif)
-		testSymmetry(png, png)
-		
-		testReflexivity(gif, gif, gif)
-		testReflexivity(gif, gif, png)
-		testReflexivity(gif, png, gif)
-		testReflexivity(gif, png, png)
-		testReflexivity(png, gif, gif)
-		testReflexivity(png, gif, png)
-		testReflexivity(png, png, gif)
-		testReflexivity(png, png, png)
-    }
-
-    func testMatch() {
+    func testPatternMatching() {
         XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(mimeType: "image/jpeg")!)
 
         switch UTI(kUTTypeJPEG as String) {
@@ -172,5 +117,4 @@ class UTITests: XCTestCase {
             XCTFail("kUTTypeJPEG must comform to kUTTypeImage")
         }
     }
-
 }

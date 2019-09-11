@@ -58,3 +58,69 @@ class UTIHashableTests: XCTestCase {
 		XCTAssertFalse(utiSet.contains(UTI("not.real.uti")))
 	}
 }
+
+class UTIEquatableTests: XCTestCase {
+	
+	let gif = UTI("com.compuserve.gif")
+	let png = UTI("public.png")
+	
+	func testRawOperators() {
+		XCTAssertTrue(gif == gif)
+		XCTAssertTrue(gif != png)
+		
+		XCTAssertFalse(gif == png)
+		XCTAssertFalse(gif != gif)
+	}
+	
+	func testReflexivity() {
+		/// Test that every UTI is equal to itself.
+		func testReflexivity(_ uti: UTI) {
+			XCTAssertEqual(uti, uti)
+		}
+		
+		testReflexivity(gif)
+		testReflexivity(png)
+	}
+	
+	func testSymmetry() {
+		/// Test the equality is symmetric, i.e. that a == b equivalent to b == a
+		func testSymmetry(_ a: UTI, _ b: UTI) {
+			if a == b {
+				XCTAssertEqual(b, a)
+			} else {
+				XCTAssertNotEqual(b, a)
+			}
+		}
+		
+		testSymmetry(gif, gif)
+		testSymmetry(gif, png)
+		testSymmetry(png, gif)
+		testSymmetry(png, png)
+	}
+	
+	func testTransitivity() {
+		/// Test that 2/3 pairs being equal implies the 3rd pair must be equal.
+		func testTransitivity(_ a: UTI, _ b: UTI, _ c: UTI) {
+			let pairs = [
+				(a, b),
+				(b, c),
+				(c, a),
+			]
+			
+			let pairEquality = pairs.map(==)
+			
+			if pairEquality[0] && pairEquality[1] { XCTAssertEqual(pairs[2].0, pairs[2].1) }
+			if pairEquality[1] && pairEquality[2] { XCTAssertEqual(pairs[0].0, pairs[0].1) }
+			if pairEquality[2] && pairEquality[0] { XCTAssertEqual(pairs[1].0, pairs[1].1) }
+		}
+		
+		testTransitivity(gif, gif, gif)
+		testTransitivity(gif, gif, png)
+		testTransitivity(gif, png, gif)
+		testTransitivity(gif, png, png)
+		testTransitivity(png, gif, gif)
+		testTransitivity(png, gif, png)
+		testTransitivity(png, png, gif)
+		testTransitivity(png, png, png)
+	}
+}
