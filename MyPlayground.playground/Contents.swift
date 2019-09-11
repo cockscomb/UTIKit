@@ -15,3 +15,10 @@ case UTI(kUTTypeImage as String):
 default:
     fatalError("JPEG must be a kind of image")
 }
+
+let utiPublicData = UTI("public.data")
+let utiPublicImage = UTI("public.image")
+
+let utiSet: Set = [utiPublicData]
+utiSet.contains(utiPublicData) // => true
+utiSet.contains(utiPublicImage) // => false

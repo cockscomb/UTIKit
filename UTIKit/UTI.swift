@@ -249,7 +249,25 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible {
 
 extension UTI: Equatable {
 	static public func ==(lhs: UTI, rhs: UTI) -> Bool {
-		return UTTypeEqual(lhs.utiString as CFString, rhs.utiString as CFString)
+		// Since there is no UTTypeHash, or anything like that, we're forced to implement hashable
+		// according to raw hashing of `utiString`. To ensure our implementation of `Hashable` and
+		// `Equatable` are logically valid, we need to assert that `==` and `UTTypeEqual` behave
+		// equally
+		let expected = UTTypeEqual(lhs.utiString as CFString, rhs.utiString as CFString)
+		let actual = lhs.utiString == rhs.utiString
+		assert(expected == actual, """
+			Found a situation in which the Equatable and Hashable implementations are not compatible!
+			UTTypeEqual(\(lhs.utiString), \(rhs.utiString)) returned \(expected), but
+			\(lhs.utiString) == \(rhs.utiString) returned \(actual)
+			""")
+		
+		return expected
+	}
+}
+
+extension UTI: Hashable {
+	public func hash(into hasher: inout Hasher) {
+		hasher.combine(self.utiString)
 	}
 }
 

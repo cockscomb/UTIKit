@@ -13,6 +13,7 @@
 		09FD21411A962FC00071BF6B /* UTIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 09FD21401A962FC00071BF6B /* UTIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		09FD21471A962FC00071BF6B /* UTIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FD213B1A962FC00071BF6B /* UTIKit.framework */; };
 		09FD21581A962FCF0071BF6B /* UTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FD21571A962FCF0071BF6B /* UTI.swift */; };
+		FAB88A8C2329581900D3D615 /* UTI Equatable and Hashable Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB88A8B2329581900D3D615 /* UTI Equatable and Hashable Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		09FD21461A962FC00071BF6B /* UTIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UTIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09FD214C1A962FC00071BF6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09FD21571A962FCF0071BF6B /* UTI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTI.swift; sourceTree = "<group>"; };
+		FAB88A8B2329581900D3D615 /* UTI Equatable and Hashable Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTI Equatable and Hashable Tests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				09F886461A96B61E00ADF55F /* UTITests.swift */,
+				FAB88A8B2329581900D3D615 /* UTI Equatable and Hashable Tests.swift */,
 				09FD214B1A962FC00071BF6B /* Supporting Files */,
 			);
 			path = UTIKitTests;
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09F886471A96B61E00ADF55F /* UTITests.swift in Sources */,
+				FAB88A8C2329581900D3D615 /* UTI Equatable and Hashable Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

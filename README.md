@@ -51,6 +51,17 @@ UTI(filenameExtension: "jpeg").mimeTypes // => ["image/jpeg"]
 UTI(mimeType: "image/jpeg") == UTI(filenameExtension: "jpeg") // => true
 ```
 
+### Hashable
+
+```swift
+let utiPublicData = UTI("public.data")
+let utiPublicImage = UTI("public.image")
+
+let utiSet: Set = [utiPublicData]
+utiSet.contains(utiPublicData) // => true
+utiSet.contains(utiPublicImage) // => false
+```
+
 ### UTI Conformance checking
 
 ```swift
