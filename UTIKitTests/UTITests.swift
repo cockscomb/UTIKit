@@ -114,7 +114,7 @@ class UTITests: XCTestCase {
         case UTI(kUTTypeImage as String):
             XCTAssert(true)
         default:
-            XCTFail("kUTTypeJPEG must be comforms to kUTTypeImage")
+            XCTFail("kUTTypeJPEG must comform to kUTTypeImage")
         }
     }
 
