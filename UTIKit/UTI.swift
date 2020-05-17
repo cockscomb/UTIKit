@@ -199,7 +199,7 @@ public struct UTI: CustomStringConvertible, CustomDebugStringConvertible, Equata
         }
 
         public var version: String? {
-            return raw[kUTTypeIconFileKey as AnyHashable] as? String
+            return raw[kUTTypeVersionKey as AnyHashable] as? String
         }
 
         init(declaration: [AnyHashable: Any]) {
