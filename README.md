@@ -64,7 +64,7 @@ default:
 
 ## Requirements
 
-- Swift 4.0 or later
+- Swift 5.0 or later
 - iOS 8 or later
 - OS X 10.10 or later
 
