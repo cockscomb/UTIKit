@@ -488,7 +488,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = UTIKit;
 				SKIP_INSTALL = YES;
@@ -514,7 +513,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cockscomb.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = UTIKit;
 				SKIP_INSTALL = YES;
