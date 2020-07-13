@@ -11,7 +11,14 @@ UTI(filenameExtension: "jpeg") == UTI(mimeType: "image/jpeg")
 
 switch UTI(kUTTypeJPEG as String) {
 case UTI(kUTTypeImage as String):
-    print("JPEG is a kind of images")
+    print("JPEG is a kind of image")
 default:
-    fatalError("JPEG must be a image")
+    fatalError("JPEG must be a kind of image")
 }
+
+let utiPublicData = UTI("public.data")
+let utiPublicImage = UTI("public.image")
+
+let utiSet: Set = [utiPublicData]
+utiSet.contains(utiPublicData) // => true
+utiSet.contains(utiPublicImage) // => false

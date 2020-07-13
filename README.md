@@ -6,7 +6,7 @@ UTIKit is an UTI (Uniform Type Identifier) wrapper for Swift.
 
 ## Features
 
-UTIKit is a full featured library including entire UTI functions.
+UTIKit is a fully featured library containing the entire set of UTI functions.
 
 - Convertibility
   - Filename extension
@@ -14,30 +14,30 @@ UTIKit is a full featured library including entire UTI functions.
   - OSType (OS X only)
   - Pasteboard type (OS X only)
 - Equality
-- Conformance
+- UTI Conformance checking
 - and others…
 
 ## Usage
 
-### Making from an UTI string
+### Making a UTI from a UTI string
 
 ```swift
 let jpeg = UTI("public.jpeg")
 ```
 
-### Making from a filename extension
+### Making a UTI from a filename extension
 
 ```swift
 let jpeg = UTI(filenameExtension: "jpeg")
 ```
 
-### Making from a MIME type
+### Making a UTI from a MIME type
 
 ```swift
 let jpeg = UTI(mimeType: "image/jpeg")
 ```
 
-### Getting filename extensions or MIME types
+### Listing filename extensions and MIME types for a UTI
 
 ```swift
 UTI(mimeType: "image/jpeg").filenameExtensions // => ["jpeg", "jpg", "jpe"]
@@ -51,14 +51,25 @@ UTI(filenameExtension: "jpeg").mimeTypes // => ["image/jpeg"]
 UTI(mimeType: "image/jpeg") == UTI(filenameExtension: "jpeg") // => true
 ```
 
-### Conformance
+### Hashable
+
+```swift
+let utiPublicData = UTI("public.data")
+let utiPublicImage = UTI("public.image")
+
+let utiSet: Set = [utiPublicData]
+utiSet.contains(utiPublicData) // => true
+utiSet.contains(utiPublicImage) // => false
+```
+
+### UTI Conformance checking
 
 ```swift
 switch UTI(kUTTypeJPEG) {
 case UTI(kUTTypeImage):
-    print("JPEG is a kind of images")
+    print("JPEG is a kind of image")
 default:
-    fatalError("JPEG must be a image")
+    fatalError("JPEG must be a kind of image")
 }
 ```
 

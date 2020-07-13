@@ -76,14 +76,18 @@ class UTITests: XCTestCase {
         XCTAssertEqual(xls.mimeTypes, [ "application/vnd.ms-excel", "application/msexcel" ])
     }
 
+	
+	let declaredUTI = UTI(filenameExtension: "numbers")!
+	let dynamicUTI = UTI(filenameExtension: "some-all-new-filetype")!
+	
     func testIsDeclared() {
-        XCTAssertTrue(UTI(filenameExtension: "numbers")!.isDeclared)
-        XCTAssertFalse(UTI(filenameExtension: "meaningless-characters")!.isDeclared)
+        XCTAssertTrue(declaredUTI.isDeclared)
+        XCTAssertFalse(dynamicUTI.isDeclared)
     }
 
     func testIsDynamic() {
-        XCTAssertFalse(UTI(filenameExtension: "key")!.isDynamic)
-        XCTAssertTrue(UTI(filenameExtension: "all-new-filetype")!.isDynamic)
+        XCTAssertFalse(declaredUTI.isDynamic)
+        XCTAssertTrue(dynamicUTI.isDynamic)
     }
 
     func testDeclaration() {
@@ -103,19 +107,14 @@ class UTITests: XCTestCase {
         XCTAssertNotNil(pdf.declaringBundle)
     }
 
-    func testEquatable() {
-        XCTAssertEqual(UTI(filenameExtension: "gif"), UTI(mimeType: "image/gif"))
-    }
-
-    func testMatch() {
+    func testPatternMatching() {
         XCTAssertTrue(UTI(kUTTypeImage as String) ~= UTI(mimeType: "image/jpeg")!)
 
         switch UTI(kUTTypeJPEG as String) {
         case UTI(kUTTypeImage as String):
             XCTAssert(true)
         default:
-            XCTFail("kUTTypeJPEG must be comforms to kUTTypeImage")
+            XCTFail("kUTTypeJPEG must comform to kUTTypeImage")
         }
     }
-
 }
