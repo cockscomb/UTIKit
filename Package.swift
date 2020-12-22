@@ -10,6 +10,6 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        .target(name: "UTIKit", dependencies: [], path: "UTIKit")
+        .target(name: "UTIKit", dependencies: [], path: "UTIKit", exclude: ["Info.plist"])
     ]
 )
