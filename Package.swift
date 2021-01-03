@@ -11,5 +11,6 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(name: "UTIKit", dependencies: [], path: "UTIKit", exclude: ["Info.plist"])
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
